@@ -5,9 +5,9 @@
 # but you can also edit it by hand.
 
 meteor-platform
-aldeed:collection2
-aldeed:autoform
 iron:router
 fourseven:scss
 reywood:bootstrap3-sass
 msavin:mongol
+iron:layout
+autopublish
