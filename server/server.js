@@ -29,3 +29,7 @@ console.log(StoriesCollection.find().fetch());
 		console.log("Added fixtures");
 	}
 });
+
+Meteor.publish('stories', function() {
+	return StoriesCollection.find();
+});
