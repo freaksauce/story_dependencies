@@ -4,8 +4,6 @@ Router.route('/', function() {
 });
 
 Router.route('/add', function () {
-  this.render('story.add');
+  this.render('storyAdd');
 	this.layout('defaultLayout');
-}, {
-  name: 'story.add'
 });
