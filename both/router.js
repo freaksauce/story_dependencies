@@ -6,4 +6,7 @@ Router.route('/', function() {
 Router.route('/add', function () {
   this.render('storyAdd');
 	this.layout('defaultLayout');
+},
+{
+	name: 'storyAdd'
 });
