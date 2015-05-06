@@ -10,6 +10,10 @@ Template.home.events({
 
 });
 
+Template.storyAdd.onCreated(function() {
+  this.subHandle = Meteor.subscribe('stories');
+});
+
 Template.storyAdd.events({
   'submit #addStoryForm': function(evt, template) {
     evt.preventDefault();
@@ -36,6 +40,19 @@ Template.storyAdd.events({
     console.log(ID);
     console.log(name);
     console.log(depsArr);
+
+    var storyObj = {ID:ID, name:name, deps:depsArr};
+
+    Meteor.call('addStory', storyObj, function(err, result) {
+      if (err) {
+        console.log('[ERROR]:\n');
+        console.log(err);
+        return;
+      }
+      if (result) {
+        console.log(result);
+      }
+    });
 
   }
 });

@@ -59,9 +59,9 @@ Meteor.methods({
     return StoriesCollection.insert({
       ID: storyObj.ID,
       name: storyObj.name,
-      dependencies: storyObj.dependencies
+      dependencies: storyObj.deps
     });
-    
+
   },
   removeStory: function(storyId) {
     console.log('METHOD: removeStory');
