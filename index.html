@@ -6,7 +6,7 @@
 </body>
 
 <template name="defaultLayout">
-	<div class="container">		
+	<div class="container">
 		{{> yield}}
 	</div>
 </template>
@@ -14,12 +14,12 @@
 <template name="home">
 	<h1>Home</h1>
 
-	<p>{{#linkTo route='story.add'}}Add a story{{/linkTo}}</p>
+	<p>{{#linkTo route='storyAdd'}}Add a story{{/linkTo}}</p>
 </template>
 
 <template name="storyAdd">
 	<h1>Add a Story</h1>
-	<form method="post" id="addStoryForm">		
+	<form method="post" id="addStoryForm">
 		<label>ID: <input type="text" name="ID"></label>
 		<label>Name: <input type="text" name="name"></label>
 		<label>Dependencies: <input type="text" name="deps"></label>
