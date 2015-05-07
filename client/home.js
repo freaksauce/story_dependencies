@@ -5,18 +5,23 @@ Template.home.onRendered(function() {
 
   this.subscribe('stories', function() {
     stories = StoriesCollection.find().fetch();
-    console.log(stories);
+    // console.log(stories);
 
     nodesArr = [];
     edgesArr = [];
 
     _.map(stories, function(story) {
-      // console.log(story);
-      var tmpObj = { data: { id: story.ID, name: story.name } };
-      nodesArr.push(tmpObj);
+      console.log(story);
+      var tmpNodesObj = { data: { id: story.id, name: story.name } };
+      nodesArr.push(tmpNodesObj);
+      for(i=0; i<story.dependencies.length; i++) {
+        var tmpEdgesObj = { data: { source: story.id, target: story.dependencies[i] } };
+      }
+      edgesArr.push(tmpEdgesObj);
+      // console.log(tmpEdgesObj);
     });
 
-    console.log(nodesArr);
+    // console.log(nodesArr);
 
     $('#cy').cytoscape({
       style: cytoscape.stylesheet()
