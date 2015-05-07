@@ -56,7 +56,7 @@ Meteor.methods({
     }
 
     return StoriesCollection.insert({
-      ID: storyObj.ID,
+      id: storyObj.ID,
       name: storyObj.name,
       dependencies: storyObj.deps
     });
