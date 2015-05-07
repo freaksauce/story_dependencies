@@ -29,7 +29,7 @@ Template.storyAdd.events({
     console.log(name);
     console.log(depsArr);
 
-    var storyObj = {ID:ID, name:name, deps:depsArr};
+    var storyObj = {id:ID, name:name, deps:depsArr};
 
     Meteor.call('addStory', storyObj, function(err, result) {
       if (err) {
