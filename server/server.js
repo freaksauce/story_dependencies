@@ -41,8 +41,8 @@ Meteor.startup(function () {
 			StoriesCollection.insert(stories.pop());
 		}
 		console.log("Added fixtures");
-	}
-});*/
+	}*/
+});
 
 Meteor.publish('stories', function() {
 	return StoriesCollection.find();
