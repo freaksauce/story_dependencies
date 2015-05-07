@@ -11,16 +11,18 @@ Template.home.onRendered(function() {
     edgesArr = [];
 
     _.map(stories, function(story) {
-      console.log(story);
+      // loop stories and save nodes to arr
       var tmpNodesObj = { data: { id: story.id, name: story.name } };
       nodesArr.push(tmpNodesObj);
-      for(i=0; i<story.dependencies.length; i++) {
+      // now within loop get dependices of story and add to edges arr
+      var storyLen = story.dependencies.length;
+      for(i=0; i<storyLen; i++) {
         var tmpEdgesObj = { data: { source: story.id, target: story.dependencies[i] } };
+        edgesArr.push(tmpEdgesObj);
       }
-      edgesArr.push(tmpEdgesObj);
-      // console.log(tmpEdgesObj);
     });
 
+    console.log(edgesArr);
     // console.log(nodesArr);
 
     $('#cy').cytoscape({
