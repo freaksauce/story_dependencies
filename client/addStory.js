@@ -1,5 +1,5 @@
 Template.storyAdd.onCreated(function() {
-  this.subHandle = Meteor.subscribe('stories');
+  this.subscribe('stories');
 });
 
 Template.storyAdd.events({
