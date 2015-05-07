@@ -1,7 +1,6 @@
 Meteor.startup(function () {
 	//fixture
-	// console.log(StoriesCollection.find().count())
-	if (StoriesCollection.find().count() === 0) {
+	/*if (StoriesCollection.find().count() === 0) {
 		var stories = [
 										{
 											id: 'UI1',
@@ -43,7 +42,7 @@ Meteor.startup(function () {
 		}
 		console.log("Added fixtures");
 	}
-});
+});*/
 
 Meteor.publish('stories', function() {
 	return StoriesCollection.find();
