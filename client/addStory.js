@@ -17,11 +17,7 @@ Template.storyAdd.events({
       return false;
     }
 
-    var deps = $('input[name="deps"]').val();
-    if (deps === '') {
-      $('input[name="deps"]').addClass('invalid');
-      return false;
-    }
+    var deps = $('input[name="deps"]').val();    
 
     depsArr = deps.split(',');
 

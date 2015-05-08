@@ -1,4 +1,4 @@
-Meteor.startup(function () {
+/*Meteor.startup(function () {
 	//fixture
 	if (StoriesCollection.find().count() === 0) {
 		var stories = [
@@ -42,7 +42,7 @@ Meteor.startup(function () {
 		}
 		console.log("Added fixtures");
 	}
-});
+});*/
 
 Meteor.publish('stories', function() {
 	return StoriesCollection.find();
@@ -58,7 +58,13 @@ Meteor.methods({
 		// find the latest ID num
 		var latestId = StoriesCollection.findOne({}, {sort: {id: -1} });
 		// increment latest ID and save to storyObj ready for save
-		storyObj.id = parseInt(latestId.id) + 1;
+		console.log(latestId);
+		if (latestId != undefined) {
+			storyObj.id = parseInt(latestId.id) + 1;
+		}else{
+			console.log('no id available');
+			storyObj.id = 1;
+		}
 
     return StoriesCollection.insert({
       id: storyObj.id,
