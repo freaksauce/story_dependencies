@@ -12,12 +12,12 @@ Template.home.onRendered(function() {
 
     _.map(stories, function(story) {
       // loop stories and save nodes to arr
-      var tmpNodesObj = { data: { id: story.id, name: story.name } };
+      var tmpNodesObj = { data: { id: story.id.toString(), name: story.name } };
       nodesArr.push(tmpNodesObj);
       // now within loop get dependices of story and add to edges arr
       var storyLen = story.dependencies.length;
       for(i=0; i<storyLen; i++) {
-        var tmpEdgesObj = { data: { source: story.id, target: story.dependencies[i] } };
+        var tmpEdgesObj = { data: { source: story.id.toString(), target: story.dependencies[i] } };
         edgesArr.push(tmpEdgesObj);
       }
     });
