@@ -1,38 +1,38 @@
 Meteor.startup(function () {
 	//fixture
-	/*if (StoriesCollection.find().count() === 0) {
+	if (StoriesCollection.find().count() === 0) {
 		var stories = [
 										{
-											id: 'UI1',
+											id: '1',
 											name: 'UI Story 1',
 											dependencies: [
-												'UX2','UX3'
+												'2','3'
 											]
 										},
 										{
-											id: 'UI2',
+											id: '2',
 											name: 'UI Story 2',
-											dependencies: ['UX3']
+											dependencies: ['3']
 										},
 										{
-											id: 'UI3',
+											id: '3',
 											name: 'UI Story 3',
-											dependencies: ['UX1']
+											dependencies: ['1']
 										},
 										{
-											id: 'UX1',
+											id: '4',
 											name: 'UX Story 1',
-											dependencies: ['UI1']
+											dependencies: ['1']
 										},
 										{
-											id: 'UX2',
+											id: '5',
 											name: 'UX Story 2',
-											dependencies: ['UI2']
+											dependencies: ['2']
 										},
 										{
-											id: 'UX3',
+											id: '6',
 											name: 'UX Story 3',
-											dependencies: ['UI3']
+											dependencies: ['3']
 										}
 									];
 									console.log(stories);
@@ -41,7 +41,7 @@ Meteor.startup(function () {
 			StoriesCollection.insert(stories.pop());
 		}
 		console.log("Added fixtures");
-	}*/
+	}
 });
 
 Meteor.publish('stories', function() {
@@ -55,8 +55,13 @@ Meteor.methods({
       return false;
     }
 
+		// find the latest ID num
+		var latestId = StoriesCollection.findOne({}, {sort: {id: -1} });
+		// increment latest ID and save to storyObj ready for save
+		storyObj.id = parseInt(latestId.id) + 1;
+
     return StoriesCollection.insert({
-      id: storyObj.ID,
+      id: storyObj.id,
       name: storyObj.name,
       dependencies: storyObj.deps
     });
