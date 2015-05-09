@@ -33,7 +33,14 @@ Meteor.methods({
       storyId: storyId
     })
   },
-  editStory: function(storyId) {
+  editStory: function(storyObj) {
   	console.log('METHOD: editStory');
+		if (!storyObj) {
+      return false;
+    }
+		var storyId = storyObj.storyId;
+		return StoriesCollection.update(
+			storyId, {name: storyObj.name, dependencies: storyObj.dependencies}
+    );
   }
 });
