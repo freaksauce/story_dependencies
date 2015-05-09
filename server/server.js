@@ -38,9 +38,12 @@ Meteor.methods({
 		if (!storyObj) {
       return false;
     }
+		console.log(storyObj);
 		var storyId = storyObj.storyId;
+		var name = storyObj.name;
+		var dependencies = storyObj.deps;
 		return StoriesCollection.update(
-			storyId, {name: storyObj.name, dependencies: storyObj.dependencies}
+			{storyId: storyId}, {$set: {name: name, dependencies: dependencies}}
     );
   }
 });

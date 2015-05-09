@@ -25,7 +25,9 @@ Template.storyEdit.events({
     deps = deps.replace(/ /g,''); // remove spaces from dependecies before creating array
     depsArr = deps.split(',');
 
-    var storyObj = {name:name, deps:depsArr};
+    var storyId = parseInt(Session.get('storyId'));
+
+    var storyObj = {storyId: storyId, name:name, deps:depsArr};
 
     Meteor.call('editStory', storyObj, function(err, result) {
       if (err) {
@@ -35,7 +37,7 @@ Template.storyEdit.events({
       }
       if (result) {
         console.log(result);
-        // Router.go('home');
+        Router.go('home');
       }
     });
   }
