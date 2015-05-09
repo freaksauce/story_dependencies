@@ -15,12 +15,26 @@
 	<h1>Home</h1>
 
 	<p>{{#linkTo route='storyAdd'}}Add a story{{/linkTo}}</p>
+	<p>{{#linkTo route='dependencies'}}Dependencies{{/linkTo}}</p>
 
+	<ul>
+	{{#each stories}}
+		<li>{{id}} : {{name}} : {{dependencies}} <a href="/edit/{{id}}">Edit</a></li>
+	{{/each}}
+	</ul>
+
+</template>
+
+<template name="dependencies">
+	<h1>Dependencies</h1>
+	<p>{{#linkTo route='home'}}Home{{/linkTo}}</p>
+	<p>{{#linkTo route='storyAdd'}}Add a story{{/linkTo}}</p>
 	<div id="cy"></div>
 </template>
 
 <template name="storyAdd">
 	<h1>Add a Story</h1>
+	<p>{{#linkTo route='home'}}Home{{/linkTo}}</p>
 	<form method="post" id="addStoryForm">
 		<!-- <label>ID: <input type="text" name="ID"></label> -->
 		<label>Name: <input type="text" name="name"></label>

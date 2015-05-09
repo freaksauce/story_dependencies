@@ -32,6 +32,7 @@ Template.storyAdd.events({
       }
       if (result) {
         console.log(result);
+        Router.go('home');
       }
     });
 

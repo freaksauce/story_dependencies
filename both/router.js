@@ -1,6 +1,9 @@
 Router.route('/', function() {
 	this.render('home');
 	this.layout('defaultLayout');
+},
+{
+	name: 'home'
 });
 
 Router.route('/add', function () {
@@ -9,4 +12,20 @@ Router.route('/add', function () {
 },
 {
 	name: 'storyAdd'
+});
+
+Router.route('/edit', function () {
+  this.render('storyEdit');
+	this.layout('defaultLayout');
+},
+{
+	name: 'storyEdit'
+});
+
+Router.route('/dependencies', function() {
+	this.render('dependencies');
+	this.layout('defaultLayout');
+},
+{
+	name: 'dependencies'
 });
