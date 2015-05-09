@@ -6,19 +6,15 @@ Template.storyAdd.events({
   'submit #addStoryForm': function(evt, template) {
     evt.preventDefault();
     console.log('submit');
-    // var ID = $("input[name='ID']").val();
-    // if (ID === '') {
-    //   $("input[name='ID']").addClass('invalid');
-    //   return false;
-    // }
-    var name = $('input[name="name"]').val();
+
+    var name = $('input[name="name"]').val().trim();
     if (name === '') {
       $('input[name="name"]').addClass('invalid');
       return false;
     }
 
-    var deps = $('input[name="deps"]').val();    
-
+    var deps = $('input[name="deps"]').val();
+    deps = deps.replace(/ /g,''); // remove spaces from dependecies before creating array
     depsArr = deps.split(',');
 
     // console.log(ID);
