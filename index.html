@@ -17,11 +17,14 @@
 	<p>{{#linkTo route='storyAdd'}}Add a story{{/linkTo}}</p>
 	<p>{{#linkTo route='dependencies'}}Dependencies{{/linkTo}}</p>
 
-	<ul>
+	<dl>
 	{{#each stories}}
-		<li>{{id}} : {{name}} : {{dependencies}} <a href="/edit/{{id}}">Edit</a></li>
+		<dt>ID: {{storyId}}</dt>
+		<dd>Name: {{name}}</dd>
+		<dd>Dependicies: {{dependencies}}</dd>
+		<dd><a href="/edit/{{storyId}}">Edit</a></dd>
 	{{/each}}
-	</ul>
+	</dl>
 
 </template>
 
@@ -40,5 +43,15 @@
 		<label>Name: <input type="text" name="name"></label>
 		<label>Dependencies: <input type="text" name="deps"></label>
 		<input type="submit" name="submit" id="submitBtn">
+	</form>
+</template>
+
+<template name="storyEdit">
+	<h1>Edit Story {{Story.name}}</h1>
+	<form method="post" id="editStoryForm">
+		<p>ID: {{Story.storyId}}</p>
+		<label for="name">Name: <input id="name" type="text" name="name" value="{{Story.name}}"></label>
+		<label for="deps"><input id="deps" type="text" name="deps" value="{{Story.dependencies}}"></label>
+		<input type="submit" name="submit" value="Update">
 	</form>
 </template>

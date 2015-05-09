@@ -14,8 +14,9 @@ Router.route('/add', function () {
 	name: 'storyAdd'
 });
 
-Router.route('/edit', function () {
-  this.render('storyEdit');
+Router.route('/edit/:id', function () {
+	Session.set('storyId', this.params.id);
+	this.render('storyEdit');
 	this.layout('defaultLayout');
 },
 {

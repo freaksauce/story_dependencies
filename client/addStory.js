@@ -17,11 +17,9 @@ Template.storyAdd.events({
     deps = deps.replace(/ /g,''); // remove spaces from dependecies before creating array
     depsArr = deps.split(',');
 
-    // console.log(ID);
     console.log(name);
     console.log(depsArr);
 
-    // var storyObj = {id:ID, name:name, deps:depsArr};
     var storyObj = {name:name, deps:depsArr};
 
     Meteor.call('addStory', storyObj, function(err, result) {
